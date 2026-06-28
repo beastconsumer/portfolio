@@ -58,15 +58,12 @@ section{padding:120px 24px;max-width:1040px;margin:0 auto;position:relative}
 
 /* Hover glow */
 .hover-glow{transition:all .3s ease}.hover-glow:hover{box-shadow:0 0 40px rgba(255,255,255,.03)}
-#gradient-bg{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:0;pointer-events:none;opacity:.55}
+#gradient-bg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
 
 @media(max-width:768px){section{padding:80px 20px}.card{padding:24px}}
 </style>
 </head>
 <body>
-
-<!-- Gradient Blinds Background -->
-<canvas id="gradient-bg"></canvas>
 
 <!-- NAV -->
 <nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.8);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--b1);transition:all .3s ease">
@@ -82,51 +79,46 @@ section{padding:120px 24px;max-width:1040px;margin:0 auto;position:relative}
 </nav>
 
 <!-- HERO -->
-<section style="min-height:100vh;display:flex;align-items:center;padding-top:120px;padding-bottom:80px;position:relative;z-index:1" class="grid-bg">
-  <div style="width:100%;max-width:720px">
+<section class="hero" id="hero" style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
+  <canvas id="gradient-bg" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0"></canvas>
+  <div class="container" style="width:100%;max-width:1040px;margin:0 auto;padding:120px 24px 80px;position:relative;z-index:1">
     <div class="reveal" style="display:flex;align-items:center;gap:10px;margin-bottom:32px">
       <span class="status-dot"></span>
       <span style="font-size:13px;color:var(--t3);font-weight:500;font-family:'JetBrains Mono',monospace">Available for work</span>
     </div>
     
     <div class="reveal delay-1">
-      <h1 style="font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.02;letter-spacing:-.045em;font-family:'Space Grotesk',sans-serif;margin-bottom:20px">
-        Arthur<br>Germano
+      <h1 class="hero__headline" style="font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.02;letter-spacing:-.045em;font-family:'Space Grotesk',sans-serif;margin-bottom:20px">
+        Full-stack<br>developer &amp;<br>security<br>researcher
       </h1>
-      <p style="font-size:clamp(16px,2.5vw,20px);color:var(--t2);font-weight:400;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em">
-        Full-stack developer & security researcher
-      </p>
-      <p style="font-size:15px;color:var(--t3);max-width:500px;line-height:1.7;margin-bottom:40px">
-        I build tools at the intersection of fintech, automation, and security. Currently studying Full Stack at <strong style="color:var(--t2);font-weight:500">FIAP</strong> while shipping real products.
-      </p>
+      <p class="hero__subtitle" style="font-size:17px;color:var(--t2);margin-bottom:36px">Disponível para projetos no mundo todo</p>
     </div>
 
-    <div class="reveal delay-2" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:64px">
+    <div class="stats reveal delay-2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:600px" id="stats">
+      <div class="stat-card card-sm" style="text-align:center;padding:20px">
+        <span class="stat-card__number" style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;display:block;margin-bottom:2px">5+</span>
+        <span class="stat-card__label" style="font-size:11px;color:var(--t4);font-weight:500">Projetos</span>
+      </div>
+      <div class="stat-card card-sm" style="text-align:center;padding:20px">
+        <span class="stat-card__number" style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;display:block;margin-bottom:2px">Full-stack</span>
+        <span class="stat-card__label" style="font-size:11px;color:var(--t4);font-weight:500">Engineer</span>
+      </div>
+      <div class="stat-card card-sm" style="text-align:center;padding:20px">
+        <span class="stat-card__number" style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;display:block;margin-bottom:2px">Security</span>
+        <span class="stat-card__label" style="font-size:11px;color:var(--t4);font-weight:500">Researcher</span>
+      </div>
+      <div class="stat-card card-sm" style="text-align:center;padding:20px">
+        <span class="stat-card__number" style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;display:block;margin-bottom:2px">FIAP</span>
+        <span class="stat-card__label" style="font-size:11px;color:var(--t4);font-weight:500">Student</span>
+      </div>
+    </div>
+
+    <div class="reveal delay-3" style="display:flex;gap:10px;margin-top:40px">
       <a href="#work" class="btn btn-p">See my work <span style="font-size:16px">→</span></a>
       <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-o">
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
         GitHub
       </a>
-    </div>
-
-    <!-- Stats -->
-    <div class="reveal delay-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:560px">
-      <div class="card-sm" style="text-align:center;padding:20px">
-        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">14</div>
-        <div style="font-size:11px;color:var(--t4);font-weight:500">Repositories</div>
-      </div>
-      <div class="card-sm" style="text-align:center;padding:20px">
-        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">3</div>
-        <div style="font-size:11px;color:var(--t4);font-weight:500">Active Projects</div>
-      </div>
-      <div class="card-sm" style="text-align:center;padding:20px">
-        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">18+</div>
-        <div style="font-size:11px;color:var(--t4);font-weight:500">Commits</div>
-      </div>
-      <div class="card-sm" style="text-align:center;padding:20px">
-        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">24/7</div>
-        <div style="font-size:11px;color:var(--t4);font-weight:500">Deploy</div>
-      </div>
     </div>
   </div>
 </section>
@@ -284,8 +276,9 @@ const ctx = canvas.getContext('2d')
 let w, h, time = 0
 
 function resize() {
-    w = canvas.width = window.innerWidth
-    h = canvas.height = window.innerHeight
+    const hero = document.getElementById('hero')
+    w = canvas.width = hero.offsetWidth
+    h = canvas.height = hero.offsetHeight
 }
 resize()
 window.addEventListener('resize', resize)
@@ -330,12 +323,12 @@ function animate() {
         ctx.fillRect(0, y, w, blindH + 2)
     }
     
-    // Noise overlay
+    // Noise overlay - subtle grain, no blur
     if (noiseAmount > 0) {
         const imageData = ctx.getImageData(0, 0, w, h)
         const data = imageData.data
         for (let i = 0; i < data.length; i += 4) {
-            const noise = (Math.random() - 0.5) * noiseAmount * 255
+            const noise = (Math.random() - 0.5) * noiseAmount * 128
             data[i] = Math.max(0, Math.min(255, data[i] + noise))
             data[i+1] = Math.max(0, Math.min(255, data[i+1] + noise))
             data[i+2] = Math.max(0, Math.min(255, data[i+2] + noise))
