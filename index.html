@@ -1,226 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Arthur Germano — Full-stack Developer & Security Researcher</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Arthur Germano — Developer & Security Researcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['JetBrains Mono','monospace'],display:['Space Grotesk','Inter','system-ui','sans-serif']}}}}</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
-section{padding:100px 24px;max-width:1100px;margin:0 auto}
-.card{background:#0a0a0a;border:1px solid #141414;border-radius:12px;padding:24px;transition:all .25s ease}
-.card:hover{border-color:rgba(255,255,255,.12);transform:translateY(-2px)}
-.tag{display:inline-block;padding:3px 10px;background:rgba(255,255,255,.04);border:1px solid #1a1a1a;border-radius:6px;font-size:11px;color:#888;margin:2px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .15s;cursor:pointer}
-.btn-p{background:#fff;color:#000}.btn-p:hover{opacity:.9}
-.btn-o{border:1px solid #1a1a1a;color:#fff}.btn-o:hover{border-color:#333}
-.reveal{opacity:0;transform:translateY(24px);transition:all .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.typing::after{content:'|';animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.floating{animation:float 4s ease-in-out infinite}
-.grid-bg{background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
+:root{--bg:#000;--card:#0a0a0a;--border:#141414;--text:#888;--muted:#555;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--white);font-family:Inter,system-ui,sans-serif}
+section{padding:100px 24px;max-width:1000px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .25s ease}
+.card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+.tag{display:inline-block;padding:4px 10px;background:rgba(255,255,255,.04);border:1px solid #1a1a1a;border-radius:6px;font-size:11px;color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .15s}
+.btn-w{background:var(--white);color:var(--bg)}.btn-w:hover{opacity:.9}
+.btn-o{border:1px solid var(--border);color:var(--white)}.btn-o:hover{border-color:#333}
+.reveal{opacity:0;transform:translateY(20px);transition:all .55s ease}.reveal.on{opacity:1;transform:translateY(0)}
+.grid-bg{background-image:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.03) 0%,transparent 60%),linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:100% 100%,48px 48px,48px 48px}
+.cap-icon{width:44px;height:44px;border-radius:12px;background:var(--white);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.project-hero{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;position:relative;overflow:hidden}
+.project-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);pointer-events:none}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);border-bottom:1px solid #141414">
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between">
-    <a href="#" style="font-weight:600;font-size:16px;color:#fff;text-decoration:none;letter-spacing:-.01em;font-family:'Space Grotesk',sans-serif">AG</a>
-    <div style="display:flex;gap:24px">
-      <a href="#projects" style="font-size:13px;color:#888;text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Projetos</a>
-      <a href="#stack" style="font-size:13px;color:#888;text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Stack</a>
-      <a href="#contact" style="font-size:13px;color:#888;text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Contato</a>
-      <a href="https://github.com/beastconsumer" target="_blank" style="font-size:13px;color:#888;text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">GitHub</a>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
+  <div style="max-width:1000px;margin:0 auto;padding:0 24px;height:54px;display:flex;align-items:center;justify-content:space-between">
+    <span style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em">AG</span>
+    <div style="display:flex;gap:20px">
+      <a href="#work" style="font-size:12px;color:var(--text);text-decoration:none">Work</a>
+      <a href="#stack" style="font-size:12px;color:var(--text);text-decoration:none">Stack</a>
+      <a href="#contact" style="font-size:12px;color:var(--text);text-decoration:none">Contact</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section style="padding-top:180px;padding-bottom:120px;text-align:center;position:relative" class="grid-bg">
-  <div class="floating" style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:#0a0a0a;border:1px solid #141414;margin-bottom:32px">
-    <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-  </div>
-  <h1 style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.03em;font-family:'Space Grotesk',sans-serif;margin-bottom:16px">Arthur Germano</h1>
-  <p style="font-size:18px;color:#888;margin-bottom:8px;font-family:'Space Grotesk',sans-serif">Full-stack developer & security researcher</p>
-  <p style="font-size:15px;color:#555;max-width:500px;margin:0 auto 40px;line-height:1.6">Building tools that matter. PIX fintech, automation, cybersecurity.</p>
-  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-    <a href="#projects" class="btn btn-p">Ver projetos</a>
+<section style="padding-top:160px;padding-bottom:100px;text-align:center" class="grid-bg">
+  <h1 style="font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1.05;letter-spacing:-.04em;font-family:'Space Grotesk',sans-serif;margin-bottom:16px">Arthur Germano</h1>
+  <p style="font-size:17px;color:var(--text);margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Full-stack developer & security researcher</p>
+  <p style="font-size:14px;color:var(--muted);max-width:460px;margin:0 auto 36px;line-height:1.6">I find vulnerabilities, then build solutions. PIX fintech, automation tools, cybersecurity.</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <a href="#work" class="btn btn-w">See my work</a>
     <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-o">
-      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
       GitHub
     </a>
   </div>
-  <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%)" class="floating">
-    <svg width="20" height="20" fill="none" stroke="#444" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;max-width:600px;margin-left:auto;margin-right:auto">
+    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">14</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Repos</div></div>
+    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">3</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Projects</div></div>
+    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">18+</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Commits</div></div>
+    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">24/7</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Deploy</div></div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:48px">
-    <div style="width:3px;height:24px;background:#fff;border-radius:2px"></div>
-    <h2 style="font-size:22px;font-weight:600;font-family:'Space Grotesk',sans-serif">Projetos</h2>
+<!-- FEATURED: AstraPay -->
+<section id="work">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px">
+    <div style="width:3px;height:22px;background:var(--white);border-radius:2px"></div>
+    <h2 style="font-size:20px;font-weight:600;font-family:'Space Grotesk',sans-serif">Featured Project</h2>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
-    <!-- AstraPay -->
-    <div class="card reveal" style="display:flex;flex-direction:column">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center">
-          <svg width="18" height="18" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 12h18"/></svg>
-        </div>
-        <div>
-          <h3 style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif">AstraPay</h3>
-          <p style="font-size:12px;color:#666">PIX Fintech Platform</p>
-        </div>
+  <div class="project-hero reveal">
+    <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="width:48px;height:48px;border-radius:12px;background:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="22" height="22" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 12h18"/></svg>
       </div>
-      <p style="font-size:13px;color:#888;line-height:1.6;margin-bottom:16px;flex:1">Multi-tenant PIX payment platform. Generate charges, auto-transfer to users, public REST API, admin panel, email system.</p>
-      <div style="margin-bottom:16px"><span class="tag">PHP</span><span class="tag">SQLite</span><span class="tag">Tailwind</span><span class="tag">Asaas API</span><span class="tag">Resend</span><span class="tag">systemd</span></div>
-      <div style="display:flex;gap:8px">
-        <a href="https://github.com/beastconsumer/AstraPay" target="_blank" class="btn btn-p" style="flex:1;justify-content:center;font-size:13px">GitHub</a>
-        <a href="http://72.60.140.55:9000" target="_blank" class="btn btn-o" style="flex:1;justify-content:center;font-size:13px">Demo</a>
+      <div style="flex:1;min-width:260px">
+        <h3 style="font-size:22px;font-weight:600;font-family:'Space Grotesk',sans-serif;margin-bottom:4px">AstraPay</h3>
+        <p style="font-size:14px;color:var(--text);margin-bottom:16px">Multi-tenant PIX fintech platform</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px">
+          A complete payment infrastructure. Zezinho and Juninho create accounts, generate PIX charges via QR code, receive payments from their clients, and get auto-paid to their own PIX keys — all through a single Asaas account with configurable admin fees.
+        </p>
+        <div style="margin-bottom:12px">
+          <span class="tag">PHP</span><span class="tag">SQLite</span><span class="tag">Tailwind CSS</span><span class="tag">Asaas API</span><span class="tag">Resend</span><span class="tag">systemd</span><span class="tag">Chart.js</span><span class="tag">REST API</span>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:20px">
+          Features: user dashboard, PIX generator with QR code, transaction history, API keys for devs, admin panel, email verification, rate limiting, anti-fraud progressive tiers, auto-withdrawal. 18+ commits. 24/7 deployment.
+        </p>
+        <div style="display:flex;gap:10px">
+          <a href="https://github.com/beastconsumer/AstraPay" target="_blank" class="btn btn-w" style="font-size:13px">Source Code</a>
+          <a href="http://72.60.140.55:9000" target="_blank" class="btn btn-o" style="font-size:13px">Live Demo</a>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- mic-stream -->
-    <div class="card reveal" style="display:flex;flex-direction:column">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center">
-          <svg width="18" height="18" fill="none" stroke="#000" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+<!-- OTHER PROJECTS -->
+<section style="padding-top:0">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+    <div class="card reveal">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--white);display:flex;align-items:center;justify-content:center">
+          <svg width="16" height="16" fill="none" stroke="#000" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
         </div>
         <div>
           <h3 style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif">mic-stream</h3>
-          <p style="font-size:12px;color:#666">Audio Streaming Tool</p>
+          <p style="font-size:11px;color:var(--muted)">Audio Streaming Tool</p>
         </div>
       </div>
-      <p style="font-size:13px;color:#888;line-height:1.6;margin-bottom:16px;flex:1">Real-time microphone streaming with low-latency WebSocket support. Capture, process, and broadcast audio.</p>
-      <div style="margin-bottom:16px"><span class="tag">Python</span><span class="tag">WebSocket</span><span class="tag">Audio</span><span class="tag">Streaming</span></div>
-      <a href="https://github.com/beastconsumer/mic-stream" target="_blank" class="btn btn-p" style="justify-content:center;font-size:13px">GitHub</a>
+      <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:14px">Real-time microphone streaming with low-latency WebSocket support. Python backend.</p>
+      <div class="tag" style="margin-bottom:14px">Python</div><span class="tag">WebSocket</span>
+      <div style="margin-top:16px"><a href="https://github.com/beastconsumer/mic-stream" target="_blank" class="btn btn-o" style="font-size:12px;padding:8px 18px">GitHub</a></div>
     </div>
 
-    <!-- Alugar -->
-    <div class="card reveal" style="display:flex;flex-direction:column">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center">
-          <svg width="18" height="18" fill="none" stroke="#000" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div class="card reveal">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--white);display:flex;align-items:center;justify-content:center">
+          <svg width="16" height="16" fill="none" stroke="#000" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div>
           <h3 style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif">Alugar</h3>
-          <p style="font-size:12px;color:#666">Rental Platform</p>
+          <p style="font-size:11px;color:var(--muted)">Rental Platform</p>
         </div>
       </div>
-      <p style="font-size:13px;color:#888;line-height:1.6;margin-bottom:16px;flex:1">Property rental platform with modern TypeScript stack. Browse listings, manage bookings, connect with owners.</p>
-      <div style="margin-bottom:16px"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Node.js</span></div>
-      <a href="https://github.com/beastconsumer/alugar" target="_blank" class="btn btn-p" style="justify-content:center;font-size:13px">GitHub</a>
+      <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:14px">Property rental platform. Browse listings, manage bookings. Modern TypeScript stack.</p>
+      <div class="tag" style="margin-bottom:14px">TypeScript</div><span class="tag">React</span><span class="tag">Node.js</span>
+      <div style="margin-top:16px"><a href="https://github.com/beastconsumer/alugar" target="_blank" class="btn btn-o" style="font-size:12px;padding:8px 18px">GitHub</a></div>
     </div>
   </div>
 </section>
 
-<!-- STACK -->
-<section id="stack">
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
-    <div style="width:3px;height:24px;background:#fff;border-radius:2px"></div>
-    <h2 style="font-size:22px;font-weight:600;font-family:'Space Grotesk',sans-serif">Stack</h2>
+<!-- CAPABILITIES -->
+<section id="stack" style="border-top:1px solid var(--border)">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px">
+    <div style="width:3px;height:22px;background:var(--white);border-radius:2px"></div>
+    <h2 style="font-size:20px;font-weight:600;font-family:'Space Grotesk',sans-serif">What I do</h2>
   </div>
-  <div style="display:flex;flex-wrap:wrap;gap:8px">
-    <span class="tag" style="font-size:13px;padding:6px 14px">PHP</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Python</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">TypeScript</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">JavaScript</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">SQLite</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Tailwind CSS</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Selenium</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">REST API</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Telegram Bot</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">C#</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Godot</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Node.js</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Git</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Linux/VPS</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Docker</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">APK Modding</span>
-    <span class="tag" style="font-size:13px;padding:6px 14px">Pentest</span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+    <div class="card reveal">
+      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 12h18"/></svg></div>
+      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Fintech & Payments</h3>
+      <p style="font-size:13px;color:var(--text);line-height:1.6">PIX integration, Asaas API, payment gateways, multi-tenant platforms, REST APIs.</p>
+    </div>
+    <div class="card reveal">
+      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Automation</h3>
+      <p style="font-size:13px;color:var(--text);line-height:1.6">Selenium, nodriver, cURL, multi-threaded scrapers, Telegram bots, account checkers.</p>
+    </div>
+    <div class="card reveal">
+      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Security Research</h3>
+      <p style="font-size:13px;color:var(--text);line-height:1.6">Penetration testing, APK modding, anti-cheat bypass, vulnerability assessment, OSINT.</p>
+    </div>
+    <div class="card reveal">
+      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Infrastructure</h3>
+      <p style="font-size:13px;color:var(--text);line-height:1.6">VPS deployment, systemd, nginx, Docker, 24/7 services, cron automation.</p>
+    </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section style="border-top:1px solid #141414;border-bottom:1px solid #141414">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center">
-    <div class="reveal">
-      <div style="font-size:36px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace;margin-bottom:4px" data-count="18">0</div>
-      <div style="font-size:12px;color:#666">Commits AstraPay</div>
-    </div>
-    <div class="reveal">
-      <div style="font-size:36px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace;margin-bottom:4px" data-count="14">0</div>
-      <div style="font-size:12px;color:#666">Repositórios</div>
-    </div>
-    <div class="reveal">
-      <div style="font-size:36px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace;margin-bottom:4px" data-count="3">0</div>
-      <div style="font-size:12px;color:#666">Projetos ativos</div>
-    </div>
-    <div class="reveal">
-      <div style="font-size:36px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace;margin-bottom:4px" data-count="24">0</div>
-      <div style="font-size:12px;color:#666">Deploy 24/7</div>
-    </div>
+<!-- TECH STACK -->
+<section style="padding-top:0">
+  <div style="display:flex;flex-wrap:wrap;gap:7px">
+    <span class="tag" style="font-size:12px;padding:6px 12px">PHP</span><span class="tag" style="font-size:12px;padding:6px 12px">Python</span><span class="tag" style="font-size:12px;padding:6px 12px">TypeScript</span><span class="tag" style="font-size:12px;padding:6px 12px">JavaScript</span><span class="tag" style="font-size:12px;padding:6px 12px">SQLite</span><span class="tag" style="font-size:12px;padding:6px 12px">Tailwind</span><span class="tag" style="font-size:12px;padding:6px 12px">Selenium</span><span class="tag" style="font-size:12px;padding:6px 12px">REST API</span><span class="tag" style="font-size:12px;padding:6px 12px">Telegram Bot</span><span class="tag" style="font-size:12px;padding:6px 12px">C#</span><span class="tag" style="font-size:12px;padding:6px 12px">Godot</span><span class="tag" style="font-size:12px;padding:6px 12px">Node.js</span><span class="tag" style="font-size:12px;padding:6px 12px">Git</span><span class="tag" style="font-size:12px;padding:6px 12px">Linux/VPS</span><span class="tag" style="font-size:12px;padding:6px 12px">Docker</span><span class="tag" style="font-size:12px;padding:6px 12px">APK Modding</span><span class="tag" style="font-size:12px;padding:6px 12px">Pentest</span><span class="tag" style="font-size:12px;padding:6px 12px">Systemd</span><span class="tag" style="font-size:12px;padding:6px 12px">Nginx</span>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="text-align:center">
-  <h2 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:12px;font-family:'Space Grotesk',sans-serif">Vamos trabalhar juntos?</h2>
-  <p style="color:#888;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto">Disponível para projetos freelance e colaborações.</p>
-  <div style="display:flex;gap:12px;justify-content:center">
-    <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-o">
-      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      GitHub
-    </a>
-    <a href="mailto:beastconsumer1@gmail.com" class="btn btn-p">Email</a>
+<section id="contact" style="border-top:1px solid var(--border);text-align:center">
+  <h2 style="font-size:24px;font-weight:700;margin-bottom:10px;font-family:'Space Grotesk',sans-serif">Let's work together</h2>
+  <p style="color:var(--muted);margin-bottom:28px;font-size:14px">Available for freelance projects and collaborations.</p>
+  <div style="display:flex;gap:10px;justify-content:center">
+    <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-w">GitHub</a>
+    <a href="mailto:beastconsumer1@gmail.com" class="btn btn-o">Email</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer style="border-top:1px solid #141414;padding:32px 24px;text-align:center">
-  <p style="font-size:12px;color:#555">© 2026 Arthur Germano</p>
+<footer style="border-top:1px solid var(--border);padding:28px 24px;text-align:center">
+  <p style="font-size:11px;color:var(--muted)">© 2026 Arthur Germano</p>
 </footer>
 
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') })
-}, {threshold:0.1})
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
-
-// Count up animation
-const countObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      const target = parseInt(e.target.dataset.count)
-      let current = 0
-      const step = Math.ceil(target / 30)
-      const timer = setInterval(() => {
-        current += step
-        if(current >= target) { current = target; clearInterval(timer) }
-        e.target.textContent = current + '+'
-      }, 40)
-      countObserver.unobserve(e.target)
-    }
-  })
-}, {threshold:0.5})
-document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el))
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault()
-    document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})
-  })
-})
+const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('on')})},{threshold:.1})
+document.querySelectorAll('.reveal').forEach(e=>obs.observe(e))
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})}))
 </script>
 </body>
 </html>
