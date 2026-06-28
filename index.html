@@ -2,185 +2,296 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Arthur Germano — Full-stack developer, security researcher. FIAP student. Building PIX fintech, automation tools, and cybersecurity solutions.">
 <title>Arthur Germano — Developer & Security Researcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['JetBrains Mono','monospace'],display:['Space Grotesk','Inter','system-ui','sans-serif']}}}}</script>
 <style>
-:root{--bg:#000;--card:#0a0a0a;--border:#141414;--text:#888;--muted:#555;--white:#fff}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--white);font-family:Inter,system-ui,sans-serif}
-section{padding:100px 24px;max-width:1000px;margin:0 auto}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .25s ease}
-.card:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
-.tag{display:inline-block;padding:4px 10px;background:rgba(255,255,255,.04);border:1px solid #1a1a1a;border-radius:6px;font-size:11px;color:var(--text)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .15s}
-.btn-w{background:var(--white);color:var(--bg)}.btn-w:hover{opacity:.9}
-.btn-o{border:1px solid var(--border);color:var(--white)}.btn-o:hover{border-color:#333}
-.reveal{opacity:0;transform:translateY(20px);transition:all .55s ease}.reveal.on{opacity:1;transform:translateY(0)}
-.grid-bg{background-image:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.03) 0%,transparent 60%),linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:100% 100%,48px 48px,48px 48px}
-.cap-icon{width:44px;height:44px;border-radius:12px;background:var(--white);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.project-hero{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;position:relative;overflow:hidden}
-.project-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);pointer-events:none}
+:root{--bg:#000;--c1:#0a0a0a;--c2:#0f0f0f;--b1:#141414;--b2:#1a1a1a;--t1:#fff;--t2:#a1a1aa;--t3:#71717a;--t4:#52525b;--accent:#fff;--green:#22c55e;--amber:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(255,255,255,.15);color:var(--t1)}
+section{padding:120px 24px;max-width:1040px;margin:0 auto;position:relative}
+
+/* Components */
+.card{background:var(--c1);border:1px solid var(--b1);border-radius:16px;padding:32px;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.card:hover{border-color:rgba(255,255,255,.08);transform:translateY(-1px);box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.card-sm{background:var(--c1);border:1px solid var(--b1);border-radius:14px;padding:24px;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.card-sm:hover{border-color:rgba(255,255,255,.06);transform:translateY(-1px)}
+.tag{display:inline-flex;align-items:center;padding:3px 10px;background:rgba(255,255,255,.03);border:1px solid var(--b1);border-radius:7px;font-size:11px;font-weight:500;color:var(--t3);font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s cubic-bezier(.4,0,.2,1);cursor:pointer;font-family:Inter,system-ui,sans-serif;border:none;outline:none}
+.btn-p{background:var(--accent);color:var(--bg)}.btn-p:hover{background:rgba(255,255,255,.9);transform:translateY(-1px)}
+.btn-o{border:1px solid var(--b1);color:var(--t1);background:transparent}.btn-o:hover{border-color:var(--b2);background:rgba(255,255,255,.02)}
+.btn-g{background:var(--c1);border:1px solid var(--b1);color:var(--t1)}.btn-g:hover{border-color:var(--b2)}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(34,197,94,.3)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@keyframes drawLine{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+
+.reveal{opacity:0}.reveal.on{animation:fadeUp .6s cubic-bezier(.4,0,.2,1) forwards}
+.reveal-l{opacity:0}.reveal-l.on{animation:slideRight .6s cubic-bezier(.4,0,.2,1) forwards}
+.reveal-s{opacity:0}.reveal-s.on{animation:scaleIn .5s cubic-bezier(.4,0,.2,1) forwards}
+.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}.delay-4{animation-delay:.4s}
+.floating{animation:float 5s ease-in-out infinite}
+
+/* Status dot */
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;animation:pulse-ring 2s infinite}
+
+/* Grid bg */
+.grid-bg{background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:56px 56px}
+
+/* Timeline */
+.timeline-line{position:absolute;left:7px;top:0;bottom:0;width:1px;background:var(--b1)}
+.timeline-dot{width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--b2);position:relative;z-index:1;flex-shrink:0;margin-top:4px}
+
+/* Gradient text */
+.gradient-text{background:linear-gradient(135deg,var(--t1) 0%,var(--t2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Hover glow */
+.hover-glow{transition:all .3s ease}.hover-glow:hover{box-shadow:0 0 40px rgba(255,255,255,.03)}
+
+@media(max-width:768px){section{padding:80px 20px}.card{padding:24px}}
 </style>
 </head>
 <body>
 
-<nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
-  <div style="max-width:1000px;margin:0 auto;padding:0 24px;height:54px;display:flex;align-items:center;justify-content:space-between">
-    <span style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em">AG</span>
-    <div style="display:flex;gap:20px">
-      <a href="#work" style="font-size:12px;color:var(--text);text-decoration:none">Work</a>
-      <a href="#stack" style="font-size:12px;color:var(--text);text-decoration:none">Stack</a>
-      <a href="#contact" style="font-size:12px;color:var(--text);text-decoration:none">Contact</a>
+<!-- NAV -->
+<nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.8);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--b1);transition:all .3s ease">
+  <div style="max-width:1040px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between">
+    <a href="#" style="font-weight:700;font-size:16px;color:var(--t1);text-decoration:none;letter-spacing:-.02em;font-family:'Space Grotesk',sans-serif">Arthur Germano</a>
+    <div style="display:flex;align-items:center;gap:24px">
+      <a href="#work" style="font-size:13px;font-weight:500;color:var(--t3);text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#71717a'">Work</a>
+      <a href="#journey" style="font-size:13px;font-weight:500;color:var(--t3);text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#71717a'">Journey</a>
+      <a href="#contact" style="font-size:13px;font-weight:500;color:var(--t3);text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#71717a'">Contact</a>
+      <a href="https://github.com/beastconsumer" target="_blank" style="font-size:13px;font-weight:500;color:var(--t3);text-decoration:none;transition:color .15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#71717a'">GitHub ↗</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section style="padding-top:160px;padding-bottom:100px;text-align:center" class="grid-bg">
-  <h1 style="font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1.05;letter-spacing:-.04em;font-family:'Space Grotesk',sans-serif;margin-bottom:16px">Arthur Germano</h1>
-  <p style="font-size:17px;color:var(--text);margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Full-stack developer & security researcher</p>
-  <p style="font-size:14px;color:var(--muted);max-width:460px;margin:0 auto 36px;line-height:1.6">I find vulnerabilities, then build solutions. PIX fintech, automation tools, cybersecurity.</p>
-  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-    <a href="#work" class="btn btn-w">See my work</a>
-    <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-o">
-      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
-      GitHub
-    </a>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;max-width:600px;margin-left:auto;margin-right:auto">
-    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">14</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Repos</div></div>
-    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">3</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Projects</div></div>
-    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">18+</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Commits</div></div>
-    <div><div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace">24/7</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Deploy</div></div>
-  </div>
-</section>
+<section style="min-height:100vh;display:flex;align-items:center;padding-top:120px;padding-bottom:80px" class="grid-bg">
+  <div style="width:100%;max-width:720px">
+    <div class="reveal" style="display:flex;align-items:center;gap:10px;margin-bottom:32px">
+      <span class="status-dot"></span>
+      <span style="font-size:13px;color:var(--t3);font-weight:500;font-family:'JetBrains Mono',monospace">Available for work</span>
+    </div>
+    
+    <div class="reveal delay-1">
+      <h1 style="font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.02;letter-spacing:-.045em;font-family:'Space Grotesk',sans-serif;margin-bottom:20px">
+        Arthur<br>Germano
+      </h1>
+      <p style="font-size:clamp(16px,2.5vw,20px);color:var(--t2);font-weight:400;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em">
+        Full-stack developer & security researcher
+      </p>
+      <p style="font-size:15px;color:var(--t3);max-width:500px;line-height:1.7;margin-bottom:40px">
+        I build tools at the intersection of fintech, automation, and security. Currently studying Full Stack at <strong style="color:var(--t2);font-weight:500">FIAP</strong> while shipping real products.
+      </p>
+    </div>
 
-<!-- FEATURED: AstraPay -->
-<section id="work">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px">
-    <div style="width:3px;height:22px;background:var(--white);border-radius:2px"></div>
-    <h2 style="font-size:20px;font-weight:600;font-family:'Space Grotesk',sans-serif">Featured Project</h2>
-  </div>
+    <div class="reveal delay-2" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:64px">
+      <a href="#work" class="btn btn-p">See my work <span style="font-size:16px">→</span></a>
+      <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-o">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        GitHub
+      </a>
+    </div>
 
-  <div class="project-hero reveal">
-    <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
-      <div style="width:48px;height:48px;border-radius:12px;background:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-        <svg width="22" height="22" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 12h18"/></svg>
+    <!-- Stats -->
+    <div class="reveal delay-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:560px">
+      <div class="card-sm" style="text-align:center;padding:20px">
+        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">14</div>
+        <div style="font-size:11px;color:var(--t4);font-weight:500">Repositories</div>
       </div>
-      <div style="flex:1;min-width:260px">
-        <h3 style="font-size:22px;font-weight:600;font-family:'Space Grotesk',sans-serif;margin-bottom:4px">AstraPay</h3>
-        <p style="font-size:14px;color:var(--text);margin-bottom:16px">Multi-tenant PIX fintech platform</p>
-        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px">
-          A complete payment infrastructure. Zezinho and Juninho create accounts, generate PIX charges via QR code, receive payments from their clients, and get auto-paid to their own PIX keys — all through a single Asaas account with configurable admin fees.
-        </p>
-        <div style="margin-bottom:12px">
-          <span class="tag">PHP</span><span class="tag">SQLite</span><span class="tag">Tailwind CSS</span><span class="tag">Asaas API</span><span class="tag">Resend</span><span class="tag">systemd</span><span class="tag">Chart.js</span><span class="tag">REST API</span>
-        </div>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:20px">
-          Features: user dashboard, PIX generator with QR code, transaction history, API keys for devs, admin panel, email verification, rate limiting, anti-fraud progressive tiers, auto-withdrawal. 18+ commits. 24/7 deployment.
-        </p>
-        <div style="display:flex;gap:10px">
-          <a href="https://github.com/beastconsumer/AstraPay" target="_blank" class="btn btn-w" style="font-size:13px">Source Code</a>
-          <a href="http://72.60.140.55:9000" target="_blank" class="btn btn-o" style="font-size:13px">Live Demo</a>
-        </div>
+      <div class="card-sm" style="text-align:center;padding:20px">
+        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">3</div>
+        <div style="font-size:11px;color:var(--t4);font-weight:500">Active Projects</div>
+      </div>
+      <div class="card-sm" style="text-align:center;padding:20px">
+        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">18+</div>
+        <div style="font-size:11px;color:var(--t4);font-weight:500">Commits</div>
+      </div>
+      <div class="card-sm" style="text-align:center;padding:20px">
+        <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px">24/7</div>
+        <div style="font-size:11px;color:var(--t4);font-weight:500">Deploy</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OTHER PROJECTS -->
-<section style="padding-top:0">
+<!-- FEATURED WORK -->
+<section id="work">
+  <div class="reveal" style="margin-bottom:48px">
+    <span style="font-size:11px;font-weight:600;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;font-family:'JetBrains Mono',monospace">Featured Work</span>
+    <h2 style="font-size:clamp(24px,3vw,32px);font-weight:700;margin-top:8px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em">Projects that ship</h2>
+  </div>
+
+  <!-- AstraPay — Hero Project -->
+  <div class="card hover-glow reveal delay-1" style="margin-bottom:24px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none"></div>
+    <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;position:relative;z-index:1">
+      <div class="floating" style="width:52px;height:52px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="24" height="24" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 12h18"/></svg>
+      </div>
+      <div style="flex:1;min-width:260px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <h3 style="font-size:22px;font-weight:700;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em">AstraPay</h3>
+          <span style="font-size:11px;color:var(--amber);font-weight:500;font-family:'JetBrains Mono',monospace;background:rgba(245,158,11,.1);padding:3px 8px;border-radius:5px">IN PRODUCTION</span>
+        </div>
+        <p style="font-size:14px;color:var(--t2);margin-bottom:6px;font-weight:500">Multi-tenant PIX fintech platform</p>
+        <p style="font-size:13px;color:var(--t3);line-height:1.7;margin-bottom:18px;max-width:620px">
+          A complete payment infrastructure where users create accounts, generate PIX charges via QR code, receive payments from their clients, and get auto-paid to their own PIX keys — all through a single Asaas account. Features user dashboard, admin panel, public REST API for developers, email verification, anti-fraud tiers, and 24/7 systemd deployment.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
+          <span class="tag">PHP</span><span class="tag">SQLite</span><span class="tag">Tailwind</span><span class="tag">Asaas API</span><span class="tag">Resend</span><span class="tag">REST API</span><span class="tag">systemd</span><span class="tag">Chart.js</span>
+        </div>
+        <div style="display:flex;gap:10px">
+          <a href="https://github.com/beastconsumer/AstraPay" target="_blank" class="btn btn-p" style="font-size:13px">Source Code</a>
+          <a href="http://72.60.140.55:9000" target="_blank" class="btn btn-o" style="font-size:13px">
+            <span class="status-dot" style="animation:none;width:6px;height:6px"></span>Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other Projects -->
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-    <div class="card reveal">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-        <div style="width:36px;height:36px;border-radius:10px;background:var(--white);display:flex;align-items:center;justify-content:center">
+    <div class="card-sm reveal delay-2">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center">
           <svg width="16" height="16" fill="none" stroke="#000" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
         </div>
         <div>
           <h3 style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif">mic-stream</h3>
-          <p style="font-size:11px;color:var(--muted)">Audio Streaming Tool</p>
+          <p style="font-size:11px;color:var(--t4)">Audio Streaming</p>
         </div>
       </div>
-      <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:14px">Real-time microphone streaming with low-latency WebSocket support. Python backend.</p>
-      <div class="tag" style="margin-bottom:14px">Python</div><span class="tag">WebSocket</span>
-      <div style="margin-top:16px"><a href="https://github.com/beastconsumer/mic-stream" target="_blank" class="btn btn-o" style="font-size:12px;padding:8px 18px">GitHub</a></div>
+      <p style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:14px">Real-time microphone streaming tool with low-latency WebSocket support. Python backend.</p>
+      <div style="display:flex;gap:6px;margin-bottom:16px"><span class="tag">Python</span><span class="tag">WebSocket</span><span class="tag">Audio</span></div>
+      <a href="https://github.com/beastconsumer/mic-stream" target="_blank" class="btn btn-g" style="font-size:12px;padding:8px 16px">GitHub ↗</a>
     </div>
 
-    <div class="card reveal">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-        <div style="width:36px;height:36px;border-radius:10px;background:var(--white);display:flex;align-items:center;justify-content:center">
+    <div class="card-sm reveal delay-3">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center">
           <svg width="16" height="16" fill="none" stroke="#000" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div>
           <h3 style="font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif">Alugar</h3>
-          <p style="font-size:11px;color:var(--muted)">Rental Platform</p>
+          <p style="font-size:11px;color:var(--t4)">Rental Platform</p>
         </div>
       </div>
-      <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:14px">Property rental platform. Browse listings, manage bookings. Modern TypeScript stack.</p>
-      <div class="tag" style="margin-bottom:14px">TypeScript</div><span class="tag">React</span><span class="tag">Node.js</span>
-      <div style="margin-top:16px"><a href="https://github.com/beastconsumer/alugar" target="_blank" class="btn btn-o" style="font-size:12px;padding:8px 18px">GitHub</a></div>
+      <p style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:14px">Property rental platform with modern TypeScript stack. Browse, book, connect.</p>
+      <div style="display:flex;gap:6px;margin-bottom:16px"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Node.js</span></div>
+      <a href="https://github.com/beastconsumer/alugar" target="_blank" class="btn btn-g" style="font-size:12px;padding:8px 16px">GitHub ↗</a>
     </div>
   </div>
 </section>
 
-<!-- CAPABILITIES -->
-<section id="stack" style="border-top:1px solid var(--border)">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:40px">
-    <div style="width:3px;height:22px;background:var(--white);border-radius:2px"></div>
-    <h2 style="font-size:20px;font-weight:600;font-family:'Space Grotesk',sans-serif">What I do</h2>
+<!-- JOURNEY / TIMELINE -->
+<section id="journey" style="border-top:1px solid var(--b1);padding-top:120px">
+  <div class="reveal" style="margin-bottom:48px">
+    <span style="font-size:11px;font-weight:600;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;font-family:'JetBrains Mono',monospace">Journey</span>
+    <h2 style="font-size:clamp(24px,3vw,32px);font-weight:700;margin-top:8px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em">How I got here</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
-    <div class="card reveal">
-      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M3 12h18"/></svg></div>
-      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Fintech & Payments</h3>
-      <p style="font-size:13px;color:var(--text);line-height:1.6">PIX integration, Asaas API, payment gateways, multi-tenant platforms, REST APIs.</p>
+
+  <div style="position:relative;max-width:600px">
+    <div class="timeline-line"></div>
+    
+    <div class="reveal" style="display:flex;gap:24px;margin-bottom:40px;position:relative">
+      <div class="timeline-dot"></div>
+      <div>
+        <span style="font-size:11px;font-weight:600;color:var(--t4);font-family:'JetBrains Mono',monospace">2019</span>
+        <h3 style="font-weight:600;font-size:16px;margin:4px 0 6px;font-family:'Space Grotesk',sans-serif">Codenage</h3>
+        <p style="font-size:13px;color:var(--t3);line-height:1.6">4 months as a developer. First real experience writing code that shipped to production. Learned that building things people actually use is completely different from tutorials.</p>
+        <div style="margin-top:10px"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">MySQL</span></div>
+      </div>
     </div>
-    <div class="card reveal">
-      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Automation</h3>
-      <p style="font-size:13px;color:var(--text);line-height:1.6">Selenium, nodriver, cURL, multi-threaded scrapers, Telegram bots, account checkers.</p>
+
+    <div class="reveal delay-1" style="display:flex;gap:24px;margin-bottom:40px;position:relative">
+      <div class="timeline-dot"></div>
+      <div>
+        <span style="font-size:11px;font-weight:600;color:var(--t4);font-family:'JetBrains Mono',monospace">2020 — 2025</span>
+        <h3 style="font-weight:600;font-size:16px;margin:4px 0 6px;font-family:'Space Grotesk',sans-serif">Independent Projects</h3>
+        <p style="font-size:13px;color:var(--t3);line-height:1.6">Built automation tools, account checkers, scrapers, and Telegram bots. Developed deep knowledge of PHP cURL, Selenium automation, and reverse engineering. Started exploring cybersecurity — pentesting, APK modding, anti-cheat research.</p>
+        <div style="margin-top:10px"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">cURL</span><span class="tag">Pentest</span></div>
+      </div>
     </div>
-    <div class="card reveal">
-      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Security Research</h3>
-      <p style="font-size:13px;color:var(--text);line-height:1.6">Penetration testing, APK modding, anti-cheat bypass, vulnerability assessment, OSINT.</p>
-    </div>
-    <div class="card reveal">
-      <div class="cap-icon"><svg width="20" height="20" fill="none" stroke="#000" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <h3 style="font-weight:600;font-size:15px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif">Infrastructure</h3>
-      <p style="font-size:13px;color:var(--text);line-height:1.6">VPS deployment, systemd, nginx, Docker, 24/7 services, cron automation.</p>
+
+    <div class="reveal delay-2" style="display:flex;gap:24px;margin-bottom:40px;position:relative">
+      <div class="timeline-dot" style="border-color:var(--accent);background:var(--accent)"></div>
+      <div>
+        <span style="font-size:11px;font-weight:600;color:var(--t4);font-family:'JetBrains Mono',monospace">2026 — Present</span>
+        <h3 style="font-weight:600;font-size:16px;margin:4px 0 6px;font-family:'Space Grotesk',sans-serif">FIAP — Full Stack Development</h3>
+        <p style="font-size:13px;color:var(--t3);line-height:1.6">First year of a 2-year technology degree. Formalizing years of self-taught knowledge while building AstraPay — a complete fintech platform that combines everything I've learned: backend APIs, frontend design, payment integration, security, and 24/7 deployment.</p>
+        <div style="margin-top:10px">
+          <span class="tag" style="border-color:rgba(255,255,255,.1);color:var(--t2)">TypeScript</span>
+          <span class="tag" style="border-color:rgba(255,255,255,.1);color:var(--t2)">React</span>
+          <span class="tag" style="border-color:rgba(255,255,255,.1);color:var(--t2)">Node.js</span>
+          <span class="tag" style="border-color:rgba(255,255,255,.1);color:var(--t2)">SQLite</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TECH STACK -->
+<!-- STACK -->
 <section style="padding-top:0">
-  <div style="display:flex;flex-wrap:wrap;gap:7px">
-    <span class="tag" style="font-size:12px;padding:6px 12px">PHP</span><span class="tag" style="font-size:12px;padding:6px 12px">Python</span><span class="tag" style="font-size:12px;padding:6px 12px">TypeScript</span><span class="tag" style="font-size:12px;padding:6px 12px">JavaScript</span><span class="tag" style="font-size:12px;padding:6px 12px">SQLite</span><span class="tag" style="font-size:12px;padding:6px 12px">Tailwind</span><span class="tag" style="font-size:12px;padding:6px 12px">Selenium</span><span class="tag" style="font-size:12px;padding:6px 12px">REST API</span><span class="tag" style="font-size:12px;padding:6px 12px">Telegram Bot</span><span class="tag" style="font-size:12px;padding:6px 12px">C#</span><span class="tag" style="font-size:12px;padding:6px 12px">Godot</span><span class="tag" style="font-size:12px;padding:6px 12px">Node.js</span><span class="tag" style="font-size:12px;padding:6px 12px">Git</span><span class="tag" style="font-size:12px;padding:6px 12px">Linux/VPS</span><span class="tag" style="font-size:12px;padding:6px 12px">Docker</span><span class="tag" style="font-size:12px;padding:6px 12px">APK Modding</span><span class="tag" style="font-size:12px;padding:6px 12px">Pentest</span><span class="tag" style="font-size:12px;padding:6px 12px">Systemd</span><span class="tag" style="font-size:12px;padding:6px 12px">Nginx</span>
+  <div class="reveal" style="margin-bottom:32px">
+    <span style="font-size:11px;font-weight:600;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;font-family:'JetBrains Mono',monospace'>Stack</span>
+  </div>
+  <div class="reveal delay-1" style="display:flex;flex-wrap:wrap;gap:8px">
+    <span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">PHP</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Python</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">TypeScript</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">JavaScript</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">SQLite</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Tailwind</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Selenium</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">REST API</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Telegram Bot</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">C#</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Godot</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Node.js</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Git</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Linux</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">systemd</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Nginx</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Docker</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">APK Modding</span><span class="tag" style="font-size:12px;padding:6px 14px;border-color:rgba(255,255,255,.06)">Pentest</span>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="border-top:1px solid var(--border);text-align:center">
-  <h2 style="font-size:24px;font-weight:700;margin-bottom:10px;font-family:'Space Grotesk',sans-serif">Let's work together</h2>
-  <p style="color:var(--muted);margin-bottom:28px;font-size:14px">Available for freelance projects and collaborations.</p>
-  <div style="display:flex;gap:10px;justify-content:center">
-    <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-w">GitHub</a>
-    <a href="mailto:beastconsumer1@gmail.com" class="btn btn-o">Email</a>
+<section id="contact" style="border-top:1px solid var(--b1);text-align:center">
+  <div class="reveal">
+    <h2 style="font-size:clamp(24px,4vw,36px);font-weight:700;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.03em">Let's build something together</h2>
+    <p style="font-size:15px;color:var(--t3);margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6">Open to freelance projects, collaborations, and interesting opportunities.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a href="https://github.com/beastconsumer" target="_blank" class="btn btn-p">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:beastconsumer1@gmail.com" class="btn btn-o">Email</a>
+    </div>
   </div>
 </section>
 
-<footer style="border-top:1px solid var(--border);padding:28px 24px;text-align:center">
-  <p style="font-size:11px;color:var(--muted)">© 2026 Arthur Germano</p>
+<footer style="border-top:1px solid var(--b1);padding:28px 24px;text-align:center">
+  <p style="font-size:11px;color:var(--t4)">© 2026 Arthur Germano · FIAP Full Stack 2026</p>
 </footer>
 
 <script>
-const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('on')})},{threshold:.1})
-document.querySelectorAll('.reveal').forEach(e=>obs.observe(e))
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})}))
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on') })
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+document.querySelectorAll('.reveal,.reveal-l,.reveal-s').forEach(el => obs.observe(el))
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault()
+  document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
+}))
+
+// Nav background on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav')
+  if(window.scrollY > 50) nav.style.background = 'rgba(0,0,0,.95)'
+  else nav.style.background = 'rgba(0,0,0,.8)'
+})
 </script>
 </body>
 </html>
