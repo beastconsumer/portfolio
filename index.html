@@ -58,7 +58,7 @@ section{padding:120px 24px;max-width:1040px;margin:0 auto;position:relative}
 
 /* Hover glow */
 .hover-glow{transition:all .3s ease}.hover-glow:hover{box-shadow:0 0 40px rgba(255,255,255,.03)}
-#gradient-bg{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:0;pointer-events:none;opacity:.35}
+#gradient-bg{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:0;pointer-events:none;opacity:.55}
 
 @media(max-width:768px){section{padding:80px 20px}.card{padding:24px}}
 </style>
@@ -311,12 +311,12 @@ function animate() {
         
         // Gradient: top is lighter, bottom darker
         const t = i / blindCount
-        const alpha = 0.08 + Math.sin(t * Math.PI) * 0.06
+        const alpha = 0.12 + Math.sin(t * Math.PI) * 0.08
         
-        // Color blend with black
-        const r = Math.floor(color1.r * alpha * 2)
-        const g = Math.floor(color1.g * alpha)
-        const b = Math.floor(color1.b * alpha)
+        // Color blend with black - brighter pink
+        const r = Math.floor(255 * alpha * 2.5)
+        const g = Math.floor(103 * alpha * 2)
+        const b = Math.floor(250 * alpha * 2)
         
         // Spotlight effect - brighter near mouse/center
         const cx = w / 2
@@ -324,7 +324,7 @@ function animate() {
         const dx = (cx - w/2) / w
         const dy = (y + blindH/2 - cy) / h
         const dist = Math.sqrt(dx * dx + dy * dy)
-        const spotAlpha = Math.exp(-dist * dist / (spotlightRadius * spotlightRadius)) * 0.15
+        const spotAlpha = Math.exp(-dist * dist / (spotlightRadius * spotlightRadius)) * 0.25
         
         ctx.fillStyle = `rgba(${r},${g},${b},${alpha + spotAlpha})`
         ctx.fillRect(0, y, w, blindH + 2)
